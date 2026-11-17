@@ -27,8 +27,10 @@ public class AttemptTracker {
         );
     }
 
+
     public boolean isBlocked(String email) {
-        return getState(email).isBlocked();
+        UserState state = states.get(email);
+        return state != null && state.isBlocked();
     }
 
     public int recordFailure(String email) {
@@ -38,8 +40,12 @@ public class AttemptTracker {
         );
     }
 
+
     public long getRemainingBlockSeconds(String email) {
-        return getState(email).getRemainingBlockSeconds();
+        UserState state = states.get(email);
+        return state == null
+                ? 0
+                : state.getRemainingBlockSeconds();
     }
 
     public void reset(String email) {
