@@ -167,6 +167,7 @@ public class GCMApp extends Application {
         if (worker2 != null) {
             worker2.interrupt();
         }
+        System.out.println("Application shutdown completed.");
     }
 
     public static void main(String[] args) {

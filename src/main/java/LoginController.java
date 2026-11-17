@@ -204,6 +204,7 @@ public class LoginController {
 
 
 
+
     public void shutdown() {
 
         stopCountdown();
@@ -211,5 +212,10 @@ public class LoginController {
         if (loginThread != null) {
             loginThread.interrupt();
         }
+
+        System.out.println(
+                "Login controller shutdown completed."
+        );
     }
+
 }
