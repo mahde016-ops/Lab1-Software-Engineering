@@ -15,6 +15,8 @@ public class LoginController {
 
     @FXML
     private Button concurrencyButton;
+
+    @FXML
     private TextField usernameField;
 
     @FXML
