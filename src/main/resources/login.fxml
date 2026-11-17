@@ -9,7 +9,7 @@
       alignment="CENTER"
       spacing="15"
       prefWidth="400"
-      prefHeight="300">
+      prefHeight="330">
 
     <padding>
         <Insets top="25" right="35" bottom="25" left="35"/>
@@ -26,10 +26,16 @@
 
     <Label fx:id="errorLabel"
            text=""
+           wrapText="true"
            style="-fx-text-fill: red;"/>
 
-    <Button text="Login"
+    <Button fx:id="loginButton"
+            text="Login"
             prefWidth="120"
             onAction="#handleLogin"/>
+
+    <Button text="Concurrency Test"
+            prefWidth="160"
+            onAction="#handleConcurrencyTest"/>
 
 </VBox>
