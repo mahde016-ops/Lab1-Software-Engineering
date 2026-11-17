@@ -34,8 +34,11 @@
             prefWidth="120"
             onAction="#handleLogin"/>
 
-    <Button text="Concurrency Test"
+
+    <Button fx:id="concurrencyButton"
+            text="Concurrency Test"
             prefWidth="160"
             onAction="#handleConcurrencyTest"/>
+
 
 </VBox>

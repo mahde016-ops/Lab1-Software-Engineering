@@ -14,6 +14,7 @@ import java.util.concurrent.BlockingQueue;
 public class LoginController {
 
     @FXML
+    private Button concurrencyButton;
     private TextField usernameField;
 
     @FXML
@@ -166,17 +167,16 @@ public class LoginController {
         }
     }
 
-    @FXML
 
+    @FXML
     private void handleConcurrencyTest() {
 
+        concurrencyButton.setDisable(true);
         errorLabel.setText("Running concurrency test...");
 
         Thread testThread = new Thread(() -> {
-
             try {
                 String report = ConcurrencyTest.runTest();
-
                 boolean passed = report.contains("Overall: PASS");
 
                 Platform.runLater(() -> {
@@ -185,23 +185,23 @@ public class LoginController {
                                     ? "Concurrency test PASSED! Check console."
                                     : "Concurrency test FAILED! Check console."
                     );
+                    concurrencyButton.setDisable(false);
                 });
 
             } catch (Exception e) {
                 e.printStackTrace();
 
-                Platform.runLater(() ->
-                        errorLabel.setText(
-                                "Concurrency test error. Check console."
-                        )
-                );
+                Platform.runLater(() -> {
+                    errorLabel.setText("Concurrency test error.");
+                    concurrencyButton.setDisable(false);
+                });
             }
-
         }, "ConcurrencyTestRunner");
 
         testThread.setDaemon(true);
         testThread.start();
     }
+
 
 
     public void shutdown() {
